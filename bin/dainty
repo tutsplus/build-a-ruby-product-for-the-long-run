@@ -3,23 +3,31 @@
 require 'thor'
 require 'net/http'
 require 'json'
-require 'terminal-table'
 require 'rainbow'
 require 'dainty'
 
 module Dainty
+  RENDERER_OPTIONS = {
+    "table" => "Table",
+    "default" => "OrderedList"
+  }
   class App < Thor
 
     desc "list", "List all bookmarks"
+    option :format
     def list
       stream.puts "List of bookmarks"
 
       bookmarks = Services::List.new.list
-      renderer = Renderers::OrderedList.new bookmarks, stream: stream
-      renderer.render
+      renderer.new(bookmarks, stream: stream).render
     end
 
     private
+
+    def renderer
+      key = options[:format] || "default"
+      Renderers::const_get RENDERER_OPTIONS[key]
+    end
 
     def stream
       $stdout

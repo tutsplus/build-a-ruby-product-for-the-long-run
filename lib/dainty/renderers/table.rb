@@ -1,6 +1,7 @@
+require "terminal-table"
 module Dainty
   module Renderers
-    class OrderedList
+    class Table
       attr_reader :bookmarks, :stream
       def initialize bookmarks, options
         @bookmarks = bookmarks
@@ -8,8 +9,15 @@ module Dainty
       end
 
       def render
-        bookmarks.each_with_index do |bookmark, index|
-          stream.puts "#{index}. #{bookmark.title}, #{bookmark.url}"
+        table = Terminal::Table.new rows: rows
+        stream.puts table
+      end
+
+      private
+
+      def rows
+        bookmarks.map do |bookmark|
+          [ bookmark.title, bookmark.url ]
         end
       end
     end
