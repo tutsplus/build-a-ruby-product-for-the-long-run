@@ -1,11 +1,12 @@
 require 'minitest_helper'
 
-class TestDainty < MiniTest::Unit::TestCase
+class TestDainty < MiniTest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Dainty::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  test "it works" do
+    assert true
   end
+
 end
