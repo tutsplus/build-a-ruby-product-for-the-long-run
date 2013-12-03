@@ -1,24 +1,26 @@
 # Dainty
 
-TODO: Write a gem description
+Dainty is a bookmark manager application for the purpose of educating the Tuts+
+Premium audience on the "Build a Ruby Product for the Long Run" course. Feel
+free to take a peek!
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'dainty'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install dainty
 
 ## Usage
 
-TODO: Write usage instructions here
+To use `dainty`, type it in your command line:
+
+    $ dainty
+
+You will get a help message with the list of commands available. You are able
+to:
+
+* List all of your bookmarks,
+* create new ones,
+* edit existing ones,
+* and remove them.
 
 ## Contributing
 

@@ -1,4 +1,30 @@
 #!/usr/bin/env ruby
 
 require 'thor'
+require 'net/http'
+require 'json'
 require 'dainty'
+
+module Dainty
+  class App < Thor
+
+    desc "list", "List all bookmarks"
+    def list
+      stream.puts "List of bookmarks"
+
+      bookmarks = Services::List.new.list
+      bookmarks.each do |bookmark|
+        stream.puts bookmark.title, bookmark.url
+      end
+    end
+
+    private
+
+    def stream
+      $stdout
+    end
+
+  end
+end
+
+Dainty::App.start ARGV
