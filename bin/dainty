@@ -3,6 +3,8 @@
 require 'thor'
 require 'net/http'
 require 'json'
+require 'terminal-table'
+require 'rainbow'
 require 'dainty'
 
 module Dainty
@@ -13,9 +15,8 @@ module Dainty
       stream.puts "List of bookmarks"
 
       bookmarks = Services::List.new.list
-      bookmarks.each do |bookmark|
-        stream.puts bookmark.title, bookmark.url
-      end
+      renderer = Renderers::OrderedList.new bookmarks, stream: stream
+      renderer.render
     end
 
     private

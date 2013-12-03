@@ -20,8 +20,11 @@ for the Long Run" course. Feel free to take a peek!}
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "thor"
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "minitest"
+  %w(thor rainbow terminal-table).each do |dep|
+    spec.add_runtime_dependency dep
+  end
+
+  %w(bundler rake minitest).each do |dep|
+    spec.add_development_dependency dep
+  end
 end
