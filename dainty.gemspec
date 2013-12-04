@@ -20,7 +20,7 @@ for the Long Run" course. Feel free to take a peek!}
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  %w(thor rainbow terminal-table).each do |dep|
+  %w(httparty thor rainbow terminal-table).each do |dep|
     spec.add_runtime_dependency dep
   end
 

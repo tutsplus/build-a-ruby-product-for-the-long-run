@@ -13,7 +13,7 @@ module Dainty
       end
 
       def content
-        Net::HTTP.get URI("http://localhost:3000/bookmarks")
+        HTTParty.get("http://localhost:3000/bookmarks").body
       end
     end
   end

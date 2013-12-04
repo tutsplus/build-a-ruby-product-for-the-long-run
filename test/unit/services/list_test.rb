@@ -2,7 +2,7 @@ require "minitest_helper"
 require "dainty/services/list"
 require "dainty/bookmark"
 
-require "net/http"
+require "httparty"
 require "json"
 
 module Dainty::Services
