@@ -32,6 +32,18 @@ module Dainty
       end
     end
 
+    desc "update", "Update a bookmark"
+    option :id, required: true
+    options [ :title, :url ]
+    def update
+      stream.puts "Updating bookmark..."
+
+      service = Services::Update.new options[:id], title: options[:title], url: options[:url]
+      if service.update == 204
+        stream.puts "#{options[:title]} (#{options[:url]}) was updated.".color :green
+      end
+    end
+
     private
 
     def renderer

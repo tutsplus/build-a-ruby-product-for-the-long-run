@@ -1,7 +1,6 @@
 require "dainty/version"
 require "dainty/bookmark"
-require "dainty/services/list"
-require "dainty/services/create"
+require "dainty/services"
 require "dainty/renderers/ordered_list"
 require "dainty/renderers/table"
 
