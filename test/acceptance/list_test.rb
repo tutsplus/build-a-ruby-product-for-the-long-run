@@ -1,12 +1,8 @@
 require "minitest_helper"
 
-describe "The whole app" do
+describe "The whole app - Listing" do
   let(:path)    { File.join Dir.pwd, "bin/dainty" }
   let(:command) { "ruby -Ilib #{path} list" }
-
-  before do
-    output = %x(#{command})
-  end
 
   it "prints a list of bookmarks" do
     output = %x(#{command})

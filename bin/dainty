@@ -22,6 +22,16 @@ module Dainty
       renderer.new(bookmarks, stream: stream).render
     end
 
+    desc "create", "Create a bookmark"
+    def create title, url
+      stream.puts "Creating bookmark..."
+
+      service = Services::Create.new title: title, url: url
+      if service.create == 201
+        stream.puts "#{title} (#{url}) was bookmarked.".color :green
+      end
+    end
+
     private
 
     def renderer
