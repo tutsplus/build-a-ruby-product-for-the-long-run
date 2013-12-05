@@ -11,10 +11,17 @@ module Dainty
     "table" => "Table",
     "default" => "OrderedList"
   }
+
   class App < Thor
 
     desc "list", "List all bookmarks"
     option :format
+    ##
+    # Retrieves the list of bookmarks.
+    #
+    # @param format The format in which you want to render the bookmarks. It
+    #  can be either +table+ or +default+.
+    #
     def list
       stream.puts "List of bookmarks"
 

@@ -24,7 +24,7 @@ for the Long Run" course. Feel free to take a peek!}
     spec.add_runtime_dependency dep
   end
 
-  %w(bundler rake minitest).each do |dep|
+  %w(bundler rake minitest yard).each do |dep|
     spec.add_development_dependency dep
   end
 end
