@@ -5,5 +5,12 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    @bookmark = CreateBookmark.new(params[:bookmark]).create
+
+    if @bookmark
+      head 201
+    else
+      head 422
+    end
   end
 end
