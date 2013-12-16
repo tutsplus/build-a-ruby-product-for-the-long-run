@@ -12,4 +12,11 @@ class BookmarksControllerTest < ActionController::TestCase
 
     assert_response 422
   end
+
+  test "returns ok if a record is updated" do
+    bookmark = Bookmark.create! ({ title: "Tuts+", url: "http://tutsplus.com" })
+    put :update, id: bookmark.id, bookmark: { title: "Net Tuts" }
+
+    assert_response 204 # No Content
+  end
 end

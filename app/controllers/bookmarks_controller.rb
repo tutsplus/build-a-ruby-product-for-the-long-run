@@ -13,4 +13,14 @@ class BookmarksController < ApplicationController
       head 422
     end
   end
+
+  def update
+    service = UpdateBookmark.new(params[:id], params[:bookmark])
+
+    if service.update
+      head 204
+    else
+      head 422
+    end
+  end
 end
