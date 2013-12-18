@@ -5,10 +5,10 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = CreateBookmark.new(params[:bookmark]).create
-
-    if @bookmark
-      head 201
+    @service = CreateBookmark.new(params[:bookmark])
+    
+    if @service.create
+      render json: @service.bookmark, status: 201
     else
       head 422
     end
