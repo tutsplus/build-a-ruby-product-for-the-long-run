@@ -6,10 +6,17 @@ gem 'rails', '4.0.0'
 gem 'rails-api'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 gem 'active_model_serializers'
 gem 'minitest-rails'
 gem 'yard'
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
