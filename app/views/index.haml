@@ -1,3 +1,10 @@
--@bookmarks.each do |bookmark|
-  %li.bookmark
-    =bookmark
+%h1 List of bookmarks
+
+%ul
+  -@bookmarks.each do |bookmark|
+    %li.bookmark
+      %a{href: bookmark.url}
+        =precede "(" do
+          =succeed ")" do
+            =bookmark.id
+        =bookmark.title

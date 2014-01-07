@@ -5,6 +5,8 @@ require "app"
 Bundler.require :test
 include Rack::Test::Methods
 
-def app
-  App
+Capybara.app = App
+
+class MiniTest::Spec
+  include Capybara::DSL
 end

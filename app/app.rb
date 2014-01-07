@@ -1,6 +1,7 @@
 class App < Sinatra::Base
   get "/" do
-    @bookmarks = HTTParty.get "http://localhost:3000/bookmarks"
+    response = HTTParty.get "http://localhost:3000/bookmarks"
+    @bookmarks = response["bookmarks"].map { |b| OpenStruct.new b }
     haml :index
   end
 end
