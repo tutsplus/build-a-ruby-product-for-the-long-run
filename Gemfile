@@ -9,4 +9,5 @@ gem "httparty"
 group :test do
   gem "minitest"
   gem "rack-test"
+  gem "pry"
 end
