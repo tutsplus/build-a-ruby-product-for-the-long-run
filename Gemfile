@@ -10,4 +10,6 @@ group :test do
   gem "minitest"
   gem "rack-test"
   gem "pry"
+  gem "capybara"
+  gem "capybara_minitest_spec"
 end
