@@ -5,6 +5,7 @@ gem "shotgun"
 gem "haml"
 gem "redcarpet"
 gem "httparty"
+gem "sass"
 
 group :test do
   gem "minitest"
