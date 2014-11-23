@@ -1,6 +1,9 @@
 # Dainty
 
-Dainty is an API for storing bookmarks.
+Dainty is an API for storing bookmarks. It's part of the [Build a Ruby Product
+for the Long
+Run](https://code.tutsplus.com/courses/build-a-ruby-product-for-the-long-run/)
+course.
 
 ## Methods
 
