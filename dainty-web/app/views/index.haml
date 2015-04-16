@@ -1,0 +1,24 @@
+%h1 List of bookmarks
+
+.row
+  %form(action='/bookmarks' method='post')
+    %p.large-6.medium-6.columns
+      %input(type='text' name='bookmark[title]' placeholder='Title')
+    %p.large-6.medium-6.columns
+      %input(type='text' name='bookmark[url]' placeholder='URL')
+    %p.large-12.columns
+      %button.tiny Create bookmark
+
+.row
+  %ul
+    -@bookmarks.each do |bookmark|
+      %li.bookmark{id: "bookmark-#{bookmark.id}"}
+        %a{href: bookmark.url}
+          =precede "(" do
+            =succeed ")" do
+              =bookmark.id
+          =bookmark.title
+
+        %form.inline(method="post" action="/bookmarks/#{bookmark.id}")
+          %input(name="_method" type="hidden" value="delete")
+          %button.tiny.delete Delete
