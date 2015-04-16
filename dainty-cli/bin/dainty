@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'httparty'
+require 'json'
+require 'rainbow'
+require 'dainty'
+
+module Dainty
+  RENDERER_OPTIONS = {
+    "table" => "Table",
+    "default" => "OrderedList"
+  }
+
+  class App < Thor
+
+    desc "list", "List all bookmarks"
+    option :format
+    ##
+    # Retrieves the list of bookmarks.
+    #
+    # @param format The format in which you want to render the bookmarks. It
+    #  can be either +table+ or +default+.
+    #
+    def list
+      stream.puts "List of bookmarks"
+
+      bookmarks = Services::List.new.list
+      renderer.new(bookmarks, stream: stream).render
+    end
+
+    desc "create", "Create a bookmark"
+    def create title, url
+      stream.puts "Creating bookmark..."
+
+      service = Services::Create.new title: title, url: url
+      if service.create == 201
+        stream.puts "#{title} (#{url}) was bookmarked.".color :green
+      end
+    end
+
+    desc "update", "Update a bookmark"
+    option :id, required: true
+    options [ :title, :url ]
+    def update
+      stream.puts "Updating bookmark..."
+
+      service = Services::Update.new options[:id], title: options[:title], url: options[:url]
+      if service.update == 204
+        stream.puts "#{options[:title]} (#{options[:url]}) was updated.".color :green
+      end
+    end
+
+    private
+
+    def renderer
+      key = options[:format] || "default"
+      Renderers::const_get RENDERER_OPTIONS[key]
+    end
+
+    def stream
+      $stdout
+    end
+
+  end
+end
+
+Dainty::App.start ARGV
